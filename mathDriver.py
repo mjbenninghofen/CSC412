@@ -19,7 +19,7 @@ def main():
             print(i)
 
     # Test basic Extended Euclids
-    print("Extended Euclid's (5, 17)")
+    print("\nExtended Euclid's (5, 17)")
     bezoutA, bezoutB, gcd, q1, q2 = basic.extendedEuclids(5, 17)
 
     print("Bezout coefficients:", bezoutA, bezoutB)
@@ -27,10 +27,12 @@ def main():
     print("Quotients by the GCD:", q1, q2)
 
     # Test Chinese remainder theorem
-    print("Chinese Remainder: x = 0 (mod 3)")
-    print("                   x = 3 (mod 4)")
-    print("                   x = 4 (mod 5)")
-    print(chineseRemainder.chineseRemainder([0, 3, 4], [3, 4, 5]))
+    print("\nChinese Remainder: x = 1 (mod 3)")
+    print("                   x = 1 (mod 4)")
+    print("                   x = 1 (mod 5)")
+    print("                   x = 0 (mod 7)\n")
+
+    print(chineseRemainder.chineseRemainder([1, 1, 1, 0], [3, 4, 5, 7], doPrint = 1))
 
 
 if __name__ == "__main__":
