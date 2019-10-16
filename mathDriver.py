@@ -1,4 +1,5 @@
 from CrypMath import basic
+from CrypMath import chineseRemainder
 
 def main():
     # Test basic gcd
@@ -24,6 +25,13 @@ def main():
     print("Bezout coefficients:", bezoutA, bezoutB)
     print("GCD:", gcd)
     print("Quotients by the GCD:", q1, q2)
+
+    # Test Chinese remainder theorem
+    print("Chinese Remainder: x = 0 (mod 3)")
+    print("                   x = 3 (mod 4)")
+    print("                   x = 4 (mod 5)")
+    print(chineseRemainder.chineseRemainder([0, 3, 4], [3, 4, 5]))
+
 
 if __name__ == "__main__":
     main()
