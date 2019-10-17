@@ -1,4 +1,5 @@
 from CrypMath import basic
+import string, random
 
 def affineEncrypt(a, b, plaintext):
     plaintext = plaintext.lower()    
@@ -54,3 +55,33 @@ def vignereDecrypt(ciphertext, key):
         index += 1
 
     return plaintext
+
+class ADFGX:
+    alphaMatrix = []
+    key = ""
+    matSize = 0
+    def __init__(self, key):
+        self.key = key
+        self.matSize = len(key)
+        alphabet = list(string.ascii_lowercase)
+        alphabet.remove("j")
+        # Randomize the alphabet so that we can just pop elements from it
+        random.shuffle(alphabet)
+
+        # Set up the "matrix"
+        for _ in range(25):
+            self.alphaMatrix.append(list(alphabet.pop()))
+
+    def __str__(self):
+        out = ""
+
+        for i in range(1, 26):
+            out += str(self.alphaMatrix[i - 1]) + " "
+            if i % 5 == 0:
+                out += "\n"
+        out += "\nKey: " + self.key
+
+        return out
+
+    def setMatrix(self, inMatrix):
+        pass

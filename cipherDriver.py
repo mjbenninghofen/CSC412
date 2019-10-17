@@ -1,4 +1,5 @@
 from Cipher import cipher
+from Attacks import tools
 
 def main():
     # Affine Cipher
@@ -19,8 +20,15 @@ def main():
     ciphertext = cipher.vignereEncrypt(plaintext, key)
     print("Encrypting:", plaintext, "->", ciphertext)
 
+    print("\nDoing frequency analysis on", ciphertext)
+    tools.frequencyAnalysis(ciphertext)
+
     plaintext = cipher.vignereDecrypt(ciphertext, key)
-    print("Decrypting:", ciphertext, "->", plaintext)
+    print("\nDecrypting:", ciphertext, "->", plaintext)
+
+    ADFGX = cipher.ADFGX("testKey")
+
+    print("\n" + ADFGX)
 
 if __name__ == "__main__":
     main()
