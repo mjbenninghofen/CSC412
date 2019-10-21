@@ -15,3 +15,26 @@ def frequencyAnalysis(text):
         print(i, chr(i + 97), (count[i] / total) * 100)
 
     print("Most common:", chr(max + 97))
+    
+
+def keyLength(ciphertext, offsetSteps):
+    collisions = []
+    maxIndex = 0
+
+    print("Collisions:")
+    # For each displacement
+    for i in range(offsetSteps):
+        collisions.append(0)
+        print(i + 1, ": ", end='')
+
+        # and each character in the displaced string
+        for j in range(len(ciphertext) - 1 - i):
+            if ciphertext[j] == ciphertext[j+i+1]:
+                collisions[i] += 1
+
+        if collisions[i] > collisions[maxIndex]:
+            maxIndex = i
+
+        print(collisions[i])
+
+    return collisions[maxIndex]

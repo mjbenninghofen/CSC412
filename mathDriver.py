@@ -12,6 +12,8 @@ def main():
     print("gcd(24, 4)")
     print(basic.gcd(24, 4), end="\n\n")
 
+    print(basic.gcd(13, 26))
+
     # Print all relative primes to n
     user = int(input("All relative primes up to: "))
     for i in range(1, user-1):
