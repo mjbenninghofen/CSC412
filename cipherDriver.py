@@ -21,14 +21,23 @@ def main():
     print("Encrypting:", plaintext, "->", ciphertext)
 
     print("\nDoing frequency analysis on", ciphertext)
-    tools.frequencyAnalysis(ciphertext)
+    tools.frequencyAnalysis(ciphertext, doPrint=True)
 
     plaintext = cipher.vignereDecrypt(ciphertext, key)
     print("\nDecrypting:", ciphertext, "->", plaintext)
 
-    ADFGX = cipher.ADFGX("testKey")
+    # ADFGX cipher
+    print("\nADFGX cipher:")
+    ADFGX = cipher.ADFGX(input("Enter key: "))
 
-    print("\n" + ADFGX)
+    print("\n" + str(ADFGX))
+
+    plaintext = input("Enter plaintext: ")
+    
+    ciphertext = ADFGX.encrypt(plaintext)
+    print("Encrypting:", plaintext, "->", ciphertext)
+
+
 
 if __name__ == "__main__":
     main()

@@ -1,4 +1,4 @@
-def frequencyAnalysis(text):
+def frequencyAnalysis(text, doPrint = False):
     count = [0] * 26
     total = 0
     text.lower()
@@ -12,9 +12,13 @@ def frequencyAnalysis(text):
     for i in range(len(count)):
         if count[max] < count[i]:
             max = i
-        print(i, chr(i + 97), (count[i] / total) * 100)
+        if print:
+            print(i, chr(i + 97), (count[i] / total) * 100)
 
-    print("Most common:", chr(max + 97))
+    if print:
+        print("Most common:", chr(max + 97))
+
+    return max
     
 
 def keyLength(ciphertext, offsetSteps):
