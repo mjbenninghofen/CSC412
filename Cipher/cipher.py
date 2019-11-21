@@ -39,10 +39,14 @@ def vignereEncrypt(plaintext, key):
     index = 0
     ciphertext = ""
     for p in plaintext:
-        p = ord( p ) - 97
-        k = ord( key[index % len( key )] ) - 97
+        if p != " ":
+            p = ord( p ) - 97
+            k = ord( key[index % len( key )] ) - 97
 
-        ciphertext += chr( ( ( p + k ) % 26 ) + 97 )
+            ciphertext += chr( ( ( p + k ) % 26 ) + 97 )
+        else:
+            ciphertext += " "
+        
         index += 1
     
     return ciphertext
@@ -53,10 +57,14 @@ def vignereDecrypt(ciphertext, key):
     plaintext = ""
 
     for c in ciphertext:
-        c = ord( c ) - 97
-        k = ord( key[index % len( key )] ) - 97
+        if c != " ":
+            c = ord( c ) - 97
+            k = ord( key[index % len( key )] ) - 97
 
-        plaintext += chr( ( ( c - k ) % 26 ) + 97 )
+            plaintext += chr( ( ( c - k ) % 26 ) + 97 )
+        else:
+            plaintext += " "
+        
         index += 1
 
     return plaintext

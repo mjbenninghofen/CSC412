@@ -21,15 +21,17 @@ def frequencyAnalysis(text, doPrint = False):
     return max
     
 
-def keyLength(ciphertext, offsetSteps):
+def keyLength(ciphertext, offsetSteps, doPrint=False):
     collisions = []
     maxIndex = 0
 
-    print("Collisions:")
+    if doPrint == True:
+        print("Collisions:")
     # For each displacement
     for i in range(offsetSteps):
         collisions.append(0)
-        print(i + 1, ": ", end='')
+        if doPrint == True:
+            print(i + 1, ": ", end='')
 
         # and each character in the displaced string
         for j in range(len(ciphertext) - 1 - i):
@@ -39,6 +41,7 @@ def keyLength(ciphertext, offsetSteps):
         if collisions[i] > collisions[maxIndex]:
             maxIndex = i
 
-        print(collisions[i])
+        if doPrint == True:
+            print(collisions[i])
 
-    return collisions[maxIndex]
+    return maxIndex + 1
