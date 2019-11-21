@@ -1,5 +1,5 @@
 from Cipher import cipher
-from Attacks import tools, detectEnglish
+from Attacks import classicAttacks
 
 
 def main():
@@ -7,10 +7,12 @@ def main():
     print("Affine Cipher Attack:\n")
     plaintext = "it was the best of times it was the worst of times"
     ciphertext = cipher.affineEncrypt(23, 24, plaintext)
-    
+
     print(plaintext, "->", ciphertext)
 
-    print(detectEnglish.isEnglish(plaintext))
+    plaintext = classicAttacks.affine(ciphertext)
+
+    print(ciphertext, "->", plaintext)
 
 if __name__ == "__main__":
     main()
