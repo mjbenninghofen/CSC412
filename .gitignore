@@ -1,4 +1,4 @@
 Cipher/__pycache__/*
 CrypMath/__pycache__/*
 Attacks/__pycache__/*
-
+*.pyc

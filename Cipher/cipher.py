@@ -34,6 +34,35 @@ def affineDecrypt(a, b, ciphertext):
 
     return decrypted
 
+def BBS(p, q, s, numBytes):
+    m = p * q
+    t = s
+    out = 1
+
+    for _ in range(numBytes * 8):
+        t = (t ** 2) % m
+        out <<= 1
+
+        if parityOf(t) == -1:
+            out = out | 1
+
+    return out
+
+def xor(plaintext, bitstring):
+    ciphertext = ""
+
+    for i, p in enumerate(plaintext):
+        ciphertext += chr(ord(p) ^ ((bitstring >> (i * 8)) & 0xFF))
+
+    return ciphertext
+
+def parityOf(x):
+    parity = 0
+    while x:
+        parity = ~parity
+        x = x & (x-1)
+    return parity
+
 def vignereEncrypt(plaintext, key):
     plaintext = plaintext.lower()
     index = 0

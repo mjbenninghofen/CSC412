@@ -26,6 +26,27 @@ def main():
     plaintext = cipher.vignereDecrypt(ciphertext, key)
     print("\nDecrypting:", ciphertext, "->", plaintext)
 
+    # Blum Blum Shub
+    print("\nBlum Blum Shub pseudorandom bit generation: ")
+    p = int(input("Enter p: "))
+    q = int(input("Enter q: "))
+    s = int(input("Enter seed: "))
+    l = int(input("Enter desired length in bytes: "))
+
+    randomBitString = cipher.BBS(p, q, s, l)
+
+    print(bin(randomBitString))
+
+    plaintext = input("\nEnter string to encrypt with this sequence: ")
+
+    ciphertext = cipher.xor(plaintext, randomBitString)
+
+    print(plaintext, "->", ciphertext)
+
+    plaintext = cipher.xor(ciphertext, cipher.BBS(p, q, s, l))
+
+    print(ciphertext, "->", plaintext)
+
     # ADFGX cipher
     print("\nADFGX cipher:")
     ADFGX = cipher.ADFGX(input("Enter key: "))

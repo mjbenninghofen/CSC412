@@ -12,10 +12,10 @@ def frequencyAnalysis(text, doPrint = False):
     for i in range(len(count)):
         if count[max] < count[i]:
             max = i
-        if print:
+        if doPrint:
             print(i, chr(i + 97), (count[i] / total) * 100)
 
-    if print:
+    if doPrint:
         print("Most common:", chr(max + 97))
 
     return max
@@ -25,13 +25,13 @@ def keyLength(ciphertext, offsetSteps, doPrint=False):
     collisions = []
     maxIndex = 0
 
-    if doPrint == True:
+    if doPrint:
         print("Collisions:")
     # For each displacement
     for i in range(offsetSteps):
         collisions.append(0)
-        if doPrint == True:
-            print(i + 1, ": ", end='')
+        if doPrint:
+            print(i + 1, ": ")
 
         # and each character in the displaced string
         for j in range(len(ciphertext) - 1 - i):
@@ -41,7 +41,7 @@ def keyLength(ciphertext, offsetSteps, doPrint=False):
         if collisions[i] > collisions[maxIndex]:
             maxIndex = i
 
-        if doPrint == True:
+        if doPrint:
             print(collisions[i])
 
     return maxIndex + 1
