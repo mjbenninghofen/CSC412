@@ -6,3 +6,7 @@ Math functions used in cryptography including GCD, Extended Euclids, and Chinese
 
 ### Cipher
 Various ciphers including Affine, Vignere, and Block ciphers.
+
+
+### Wiki
+The wiki includes the purpose of this repository, more documentation, and an about me section.
