@@ -36,6 +36,33 @@ def main():
 
     print(chineseRemainder.chineseRemainder([1, 1, 1, 0], [3, 4, 5, 7], doPrint = 1))
 
+    # Test findModInverse(a, n)
+    print("\nModular inverse of 4 mod 13")
+
+    print(basic.modInverse(4, 11))
+
+    # Test prime factorization(n)
+    print("\nPrime factors of 17")
+
+    print(basic.primeFactorization(17))
+
+    print("\nPrime factors of 16")
+
+    print(basic.primeFactorization(16))
+
+    print("\nPrime factors of 15")
+
+    print(basic.primeFactorization(15))
+
+    # Test isPrimativeRoot(a, n)
+    print("\nIs 6 a primitive root mod 131?")
+
+    print(basic.isPrimitiveRoot(6, 131, doPrint=True))
+
+    print("\nHow about 15?")
+
+    print(basic.isPrimitiveRoot(15, 131, doPrint=True))
+
 
 if __name__ == "__main__":
     main()

@@ -2,6 +2,8 @@ import string, itertools
 from Attacks import tools, detectEnglish
 from Cipher import cipher
 
+# This is really bad, but it's what I could figure out on my own. There
+# is a better version in break_affine_2.py but it is not mine.
 def affine(ciphertext, wordLength=15):
     # Try all 312 options looking for english
     for i in [1,3,5,7,9,11,15,17,19,21,23,25]:
