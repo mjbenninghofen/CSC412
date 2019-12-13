@@ -58,7 +58,5 @@ def main():
     ciphertext = ADFGX.encrypt(plaintext)
     print("Encrypting:", plaintext, "->", ciphertext)
 
-
-
 if __name__ == "__main__":
     main()
