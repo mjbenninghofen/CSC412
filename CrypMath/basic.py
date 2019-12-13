@@ -144,6 +144,17 @@ def randomPrime(b):
 
     return primes[random.randint(0, len(primes))]
 
+# getAllPriems is the same algorithm from above, but it returns a
+# list of all positive primes less than b.
+def getAllPrimes(b):
+    primes = [2]
+
+    for i in range(3, b, 2):
+        if isPrime(i, 10):
+            primes.append(i)
+
+    return primes
+
 # isPrimitiveRoot determines if a is a primitive root of n. There is
 # an optional argument to print an outline of the algorithm as it goes.
 # First, phi(n) is calculated and the prime factorization of that value
