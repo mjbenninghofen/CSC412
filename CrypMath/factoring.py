@@ -2,17 +2,23 @@ import math
 from CrypMath import basic
 
 def factor(n, m=0, b=5):
-    # Fermat's factorization method
+    # Fermat's factorization method:
     if m == 0:
-        a = math.ceil(math.sqrt(n))
+        a = int(math.ceil(math.sqrt(n)))
 
         b_sq = (a ** 2) - n
 
         while not isSquare(b_sq):
             a += 1
-            b_sq = b_sq + 2*a + 1
+            b_sq = (a ** 2) - n
+            b = int(math.sqrt(b_sq))
 
-        return a - math.sqrt(b_sq)
+        p = a+b
+        q = a-b
+
+        assert n == p * q
+
+        return p, q
 
     # Pollard's rho
     if m == 1:
@@ -31,7 +37,7 @@ def factor(n, m=0, b=5):
         if d == n:
             return None
 
-        return d
+        return d, n // d
 
     # Pollard's P-1
     if m == 2:
@@ -43,7 +49,7 @@ def factor(n, m=0, b=5):
                 pp = pp * p
         g = basic.gcd(c-1, n)
         if 1 < g < n:
-            return g
+            return g, n // g
 
         return None
 
