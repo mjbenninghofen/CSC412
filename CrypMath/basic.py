@@ -50,6 +50,8 @@ def extendedEuclids(a, b):
     return old_s, old_t, old_r, t, s
 
 # modInverse finds the multiplicative inverse of a (mod n)
+# in a more efficent way that the Extended Euclidean algorithm
+# above. 
 def modInverse(a, n):
     if gcd(a, n) != 1:
         return -1
