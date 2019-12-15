@@ -1,4 +1,4 @@
-from Cipher import cipher
+from Cipher import cipher, RSA
 from Attacks import tools
 
 def main():
@@ -62,6 +62,31 @@ def main():
     
     ciphertext = ADFGX.encrypt(plaintext)
     print("Encrypting:", plaintext, "->", ciphertext)
+
+    # RSA cipher
+    print("\nRSA encryption:")
+    p = 7043
+    q = 911
+
+    plaintext = "iamalmostdonewiththisproject"
+
+    print("P =", p, "Q =", q)
+
+    public, private = RSA.makeKeys(p, q)
+
+    print("Public:", public, ", Private:", private)
+
+    print("Encrypting [", plaintext, "] with private key")
+
+    ciphertext = RSA.encrypt(private, plaintext)
+
+    print("Ciphertext: [", ciphertext, "]")
+
+    print("Decrypting [", ciphertext, "] with public key")
+
+    plaintext = RSA.decrypt(public, ciphertext)
+
+    print("Plaintext: [", plaintext, "]")
 
 if __name__ == "__main__":
     main()

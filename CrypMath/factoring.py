@@ -8,7 +8,7 @@ def factor(n, m=0, b=5):
 
         b_sq = (a ** 2) - n
 
-        while not isSquare(b_sq):
+        while not basic.isSquare(b_sq):
             a += 1
             b_sq = (a ** 2) - n
             b = int(math.sqrt(b_sq))
@@ -67,7 +67,7 @@ def SQUFOF(n, k, doPrint=False):
     if doPrint: print("i:", 0, P[0], Q[0], b[0])
 
     i = 1
-    while not (isSquare(Q[i]) and i % 2 == 0):
+    while not (basic.isSquare(Q[i]) and i % 2 == 0):
         b.append((P[0] + P[i-1]) // Q[i])
         P.append(b[i + 1] * Q[i] - P[i-1])
         Q.append(Q[i-1] + b[i+1] * (P[i-1] - P[i]))
@@ -111,6 +111,3 @@ def SQUFOF(n, k, doPrint=False):
     if doPrint: print("gcd(", n, ",", P[i], ") =", factor, "\n")
 
     return (factor, n // factor)
-
-def isSquare(n):
-    return math.sqrt(n) - math.floor(math.sqrt(n)) == 0

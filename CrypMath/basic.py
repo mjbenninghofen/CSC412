@@ -1,9 +1,11 @@
-from math import sqrt
+from math import sqrt, floor
 import random
 
-# gcd(a, b) is used to find the greatest common denominator
-# between a and b. If the gcd of 2 values is 1 we call them
-# relatively prime. A prime number has gcd 1 with all integers.
+'''
+gcd(a, b) is used to find the greatest common denominator
+between a and b. If the gcd of 2 values is 1 we call them
+relatively prime. A prime number has gcd 1 with all integers.
+'''
 def gcd(a, b):
     while a != b and b != 0:
         temp = b
@@ -11,15 +13,18 @@ def gcd(a, b):
         a = temp
     return a
 
-# This extended Euclidean algorithm is based on the pseudocode
-# section of this wikipedia page:
-# https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
-# It returns the Bezout coefficients, the GCD, and the
-# quotients by the GCD. It just so happens that the first
-# Bezout coefficient is the inverse of a (mod b) because
-# the Bezout coefficients are x and y from:
-#     ax + by = gcd(a, b)
-# I take advantage of that in my affine decrypt function.
+'''
+This extended Euclidean algorithm is based on the pseudocode
+section of this wikipedia page:
+https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
+It returns the Bezout coefficients, the GCD, and the
+quotients by the GCD. It just so happens that the first
+Bezout coefficient is the inverse of a (mod b) because
+the Bezout coefficients are x and y from:
+    ax + by = gcd(a, b)
+I take advantage of that in my affine decrypt function
+and RSA.
+'''
 def extendedEuclids(a, b):
     s = 0
     old_s = 1
@@ -49,9 +54,11 @@ def extendedEuclids(a, b):
 
     return old_s, old_t, old_r, t, s
 
-# modInverse finds the multiplicative inverse of a (mod n)
-# in a more efficent way that the Extended Euclidean algorithm
-# above. 
+'''
+modInverse finds the multiplicative inverse of a (mod n)
+in a more efficent way that the Extended Euclidean algorithm
+above.
+'''
 def modInverse(a, n):
     if gcd(a, n) != 1:
         return -1
@@ -61,14 +68,16 @@ def modInverse(a, n):
             return i
     return -1
 
-# primeFactorization returns a list of prime factors for the
-# given input. It does this in a similarly to how I do it on
-# paper, first by dividing by 2 until it is odd, then going
-# up the integers starting at 3 until some value is found
-# that will divide the remaining value evenly. There may be
-# a more efficient way to do this, as the only optimization
-# that I made was to only go up to sqrt(n) + 1 while searching
-# for factors.
+'''
+primeFactorization returns a list of prime factors for the
+given input. It does this in a similarly to how I do it on
+paper, first by dividing by 2 until it is odd, then going
+up the integers starting at 3 until some value is found
+that will divide the remaining value evenly. There may be
+a more efficient way to do this, as the only optimization
+that I made was to only go up to sqrt(n) + 1 while searching
+for factors.
+'''
 def primeFactorization(n):
     primeFactors = []
 
@@ -86,9 +95,11 @@ def primeFactorization(n):
 
     return primeFactors
 
-# Fermat's totient or phi(n) is the number of positive integers less
-# than n which are relatively prime to n. I use it in my isPrimitiveRoot
-# function, but it can be used for lots of things.
+'''
+Fermat's totient or phi(n) is the number of positive integers less
+than n which are relatively prime to n. I use it in my isPrimitiveRoot
+function, but it can be used for lots of things.
+'''
 def fermatTotient(n):
     result = n
 
@@ -105,15 +116,17 @@ def fermatTotient(n):
 
     return int(result)
 
-# isPrime is based off Fermat's factoring algorithm, it uses Fermat's
-# little theorem, a^(p-1) is congruent to 1 (mod p) to determine if n
-# is probably prime or not. k is the number of random values to test
-# against, where they will be x in this equation:
-#     x^(n-1) % n = 1
-# If that is true, then n is probably prime, however, that will be
-# repeated with k different values between 1 and n-1 to be more
-# confident in the answer. I have done it this way so that later,
-# when none of my code works, I can blame it on this. Good Luck!
+'''
+isPrime is based off Fermat's factoring algorithm, it uses Fermat's
+little theorem, a^(p-1) is congruent to 1 (mod p) to determine if n
+is probably prime or not. k is the number of random values to test
+against, where they will be x in this equation:
+    x^(n-1) % n = 1
+f that is true, then n is probably prime, however, that will be
+repeated with k different values between 1 and n-1 to be more
+confident in the answer. I have done it this way so that later,
+when none of my code works, I can blame it on this. Good Luck!
+'''
 def isPrime(n, k):
     if n == 2:
         return True
@@ -128,12 +141,14 @@ def isPrime(n, k):
     
     return True
 
-# randomPrime finds a random prime between 2^(b)-1 and 2^(b+1)-1.
-# These bounds are guaranteed to be odd, so we can iterate through
-# the values by two to skip all the even numbers. To ensure that
-# the returned value is not just the first prime that is encountered,
-# a list of all primes between the bounds is formed and then chosen
-# from randomly.
+'''
+randomPrime finds a random prime between 2^(b)-1 and 2^(b+1)-1.
+These bounds are guaranteed to be odd, so we can iterate through
+the values by two to skip all the even numbers. To ensure that
+the returned value is not just the first prime that is encountered,
+a list of all primes between the bounds is formed and then chosen
+from randomly.
+'''
 def randomPrime(b):
     upperBound = pow(2, b + 1) - 1
     lowerBound = pow(2, b) - 1
@@ -146,8 +161,10 @@ def randomPrime(b):
 
     return primes[random.randint(0, len(primes))]
 
-# getAllPriems is the same algorithm from above, but it returns a
-# list of all positive primes less than b.
+'''
+getAllPrimes is the same algorithm from above, but it returns a
+list of all positive primes less than b.
+'''
 def getAllPrimes(b):
     primes = [2]
 
@@ -157,15 +174,17 @@ def getAllPrimes(b):
 
     return primes
 
-# isPrimitiveRoot determines if a is a primitive root of n. There is
-# an optional argument to print an outline of the algorithm as it goes.
-# First, phi(n) is calculated and the prime factorization of that value
-# is found.
-# Next, a^(p) % n where p is phi(n) / a prime factor of phi(n) for each
-# unique prime factor.
-# Finally, if a^(p) % n is equal to 1 we know that a is not a primitive
-# root (mod n). If, on the other hand, none of the unique prime factors
-# result in this outcome, a is a primitive root (mod n).
+'''
+isPrimitiveRoot determines if a is a primitive root of n. There is
+an optional argument to print an outline of the algorithm as it goes.
+First, phi(n) is calculated and the prime factorization of that value
+is found.
+Next, a^(p) % n where p is phi(n) / a prime factor of phi(n) for each
+unique prime factor.
+Finally, if a^(p) % n is equal to 1 we know that a is not a primitive
+root (mod n). If, on the other hand, none of the unique prime factors
+result in this outcome, a is a primitive root (mod n).
+'''
 def isPrimitiveRoot(a, n, doPrint = False):
     s = fermatTotient(n)
     if doPrint:
@@ -191,3 +210,9 @@ def isPrimitiveRoot(a, n, doPrint = False):
             return False
     
     return True
+
+'''
+Returns true if the given value is a square
+'''
+def isSquare(n):
+    return sqrt(n) - floor(sqrt(n)) == 0
