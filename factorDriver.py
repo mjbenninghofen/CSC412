@@ -31,5 +31,13 @@ def main():
     factors = factoring.factor(testValue, 2)
     print(factors)
 
+    print("Shank's Square forms, n = 11111, k = 1:")
+    factors = factoring.SQUFOF(11111, 1, doPrint = True)
+    print("Factors of 111111:", factors)
+
+    print("Factors of 12312921:", factoring.SQUFOF(12312921, 1))
+    print("Factors of 83120312891:", factoring.SQUFOF(83120312891, 1))
+
+
 if __name__ == "__main__":
     main()

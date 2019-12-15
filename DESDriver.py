@@ -2,9 +2,11 @@ from Cipher import simpleDES
 import bitstring
 
 def main():
-    # Simple DES, doing this in Python was a mistake. Something is wrong
-    # somewhere, and I need to move on to the other parts of the project
-    # before I run completely out of time.
+    '''
+    Simple DES, doing this in Python was a mistake. Something is wrong
+    somewhere, and I need to move on to the other parts of the project
+    before I run completely out of time.
+    '''
     print("\nSimple DES:")
 
     key = bitstring.BitArray('0b101010101')
