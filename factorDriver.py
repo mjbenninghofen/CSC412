@@ -1,3 +1,7 @@
+'''
+Testing file for the factoring code.
+'''
+
 from CrypMath import factoring
 
 def main():

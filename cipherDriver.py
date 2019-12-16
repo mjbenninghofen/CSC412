@@ -1,3 +1,7 @@
+'''
+Testing file for the cipher module.
+'''
+
 from Cipher import cipher, RSA
 from Attacks import tools
 
@@ -72,7 +76,7 @@ def main():
 
     print("P =", p, "Q =", q)
 
-    public, private = RSA.makeKeys(p, q)
+    public, private = RSA.makeKeysFast(p, q)
 
     print("Public:", public, ", Private:", private)
 

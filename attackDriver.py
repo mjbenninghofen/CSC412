@@ -1,3 +1,7 @@
+'''
+Testing file for the attacks module.
+'''
+
 from Cipher import cipher
 from Attacks import tools, classicAttacks, detectEnglish
 
@@ -17,7 +21,7 @@ def main():
     print("\nVigenere Cipher Attack:\n")
     plaintext = "this is a string of text that is english it wont work with other languages"
     key = "stringkey"
-    ciphertext = cipher.vignereEncrypt(plaintext, key)
+    ciphertext = cipher.vigenereEncrypt(plaintext, key)
 
     extractedPlaintext, acquiredKey = classicAttacks.vigenere(ciphertext)
 

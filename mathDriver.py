@@ -1,3 +1,7 @@
+'''
+Testing file for the math module.
+'''
+
 from CrypMath import basic
 from CrypMath import chineseRemainder
 

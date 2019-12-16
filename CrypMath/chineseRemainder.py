@@ -1,5 +1,15 @@
 from CrypMath import basic
 
+'''
+There are certain things whose number is unknown. If we count them by threes,
+we have two left over; by fives, we have three left over; and by sevens, two
+are left over. How many things are there?
+
+Originally this question was posed by Sunzi, a Chinese mathematician  in the
+3rd century.
+
+This function answers that question.
+'''
 def chineseRemainder(n, a, doPrint=0):
     prod = 1
     x = 0

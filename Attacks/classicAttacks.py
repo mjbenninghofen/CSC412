@@ -24,13 +24,13 @@ def affine(ciphertext, wordLength=15):
 
 def vigenere(ciphertext):
     alphabet = string.ascii_lowercase
-    keyLength = tools.keyLength(ciphertext, 15, doPrint=True)
+    keyLength = tools.keyLength(ciphertext, 15, doPrint=False)
     print("Keylength:", keyLength)
 
     # Generate all possible strings of length keyLength and test
     for char in itertools.product(alphabet, repeat=keyLength):
         keyAttempt = "".join(char)
-        plainAttempt = cipher.vignereDecrypt(ciphertext, keyAttempt)
+        plainAttempt = cipher.vigenereDecrypt(ciphertext, keyAttempt)
 
         # If we can detect English in the output, print it and check with user
         if detectEnglish.isEnglish(plainAttempt):
