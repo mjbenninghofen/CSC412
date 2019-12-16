@@ -8,5 +8,5 @@ Math functions used in cryptography including GCD, Extended Euclids, and Chinese
 Various ciphers including Affine, Vignere, and Block ciphers.
 
 
-### Wiki
+### [Wiki](https://github.com/mjbenninghofen/CSC412/wiki)
 The wiki includes the purpose of this repository, more documentation, and an about me section.
