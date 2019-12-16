@@ -122,7 +122,7 @@ little theorem, a^(p-1) is congruent to 1 (mod p) to determine if n
 is probably prime or not. k is the number of random values to test
 against, where they will be x in this equation:
     x^(n-1) % n = 1
-f that is true, then n is probably prime, however, that will be
+if that is true, then n is probably prime, however, that will be
 repeated with k different values between 1 and n-1 to be more
 confident in the answer. I have done it this way so that later,
 when none of my code works, I can blame it on this. Good Luck!
